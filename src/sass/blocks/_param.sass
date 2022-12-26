@@ -1,0 +1,44 @@
+.param
+    &__details 
+        padding: 0.5em 1em
+        border-radius: 6px 6px 0px 0px
+        border: 1px solid #d3d4d4
+        border-bottom: none
+        &--error 
+            border-color: rgb(233, 0, 54)
+        &__title 
+            margin-bottom: 3px
+            font-size: 14px
+            color: #888888
+        &__value 
+            display: block
+            width: 100%
+            font-size: 18px
+        &__range
+            &-slider 
+                margin-top: -3px
+                height: 8px
+                background-color: #21bb57
+                border-radius: 0px 0px 6px 6px
+        &__limits 
+            padding-top: 8px
+        
+
+.limit 
+    position: relative
+    display: flex
+    justify-content: space-between
+    &__from 
+        font-size: 14px
+        color: #888888
+    &__to 
+        font-size: 14px
+        color: #888888
+    &__50 
+        position: absolute
+        border-left: 1px solid #c2c2c2
+        padding-left: 5px
+        left: 50%
+        top: 10px
+        font-size: 14px
+        color: #888888

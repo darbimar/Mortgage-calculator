@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ипотечный калькулятор</title>
+  <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Ипотечный калькулятор</h1>
+    <div class="wrapper">
+      <div class="condition">
+        <div class="condition__purpose">
+          <form> 
+            <p><input list="purpose" class="input"></p>
+            <datalist id="purpose">
+             <option>Квартира на вторичном рынке</option>
+             <option>Квартира в новостройке</option>
+             <option>Купить дом</option>
+             <option>Построить дом</option>
+             <option>Купить землю или дачный дом</option>
+             <option>Рефинансирование</option>
+            </datalist> 
+           </form> 
+        </div>
+        <div class="condition__program">
+          <button class="button">Базовая программа <span>от 10,4%</span></button>
+          <button class="button">Ипотека для IT <span>от 4,7%</span></button>
+          <button class="button">Господдержка <span>от 6,7%</span></button>
+          <button class="button">Семейная <span>от 5,7%</span></button>
+          <button class="button">Дальневосточная <span>от 1,7%</span></button>
+          <button class="button">Военная <span>от 9,8%</span></button>
+          <button class="button">Без первого взноса <span>от 10,7%</span></button>
+        </div>
+        <div class="condition__card">
+          <p>Получаю зарплату на счёт или карту СберБанка</p>
+          <div class="condition__switch">
+            <span>- 1%</span>
+            <div class="switch-btn switch-on"></div>
+          </div>
+        </div>
+        <label class="param">
+          <div class="param__details">
+            <div class="param__title">Стоимость недвижимости</div>
+            <input type="text" class="param__value" value="" inputmode="decimal" id="input-cost">
+          </div>
+          <div class="param__range-slider" id="slider-cost"></div>
+
+          <div class="param__limits limit">
+            <div class="limit__from">375 тыс. Р</div>
+            <div class="limit__50">10 млн Р</div>
+            <div class="limit__to">100 млн Р</div>
+          </div>
+        </label>
+
+        <label class="param">
+          <div class="param__details">
+            <div class="param__title">Первоначальный взнос</div>
+            <input type="text" class="param__value" value="" id="input-downpayment">
+          </div>
+          <div class="param__range-slider" id="slider-downpayment"></div>
+
+          <div class="param__limits limit">
+            <div class="limit__from" id="percents-from">15%</div>
+            <div class="limit__to">90%</div>
+          </div>
+        </label>
+
+        <div class="condition__сapital">
+          <p>Использовать материнский капитал</p>
+          <div class="switch-btn switch-on"></div>
+        </div>
+
+        <label class="param">
+          <div class="param__details">
+            <div class="param__title">Срок кредита</div>
+            <input type="text" class="param__value" value="" id="input-term">
+          </div>
+          <div class="param__range-slider" id="slider-term"></div>
+
+          <div class="param__limits limit">
+            <div class="limit__from">1 год</div>
+            <div class="limit__to">30 лет</div>
+          </div>
+        </label>
+      </div>
+      <div class="result">
+        <div class="result__sum">
+          <div class="result__payment">
+            <div class="result__title">Ежемесячный платеж</div>
+            <div class="result__subtitle">XX</div>
+          </div>
+          <div class="result__payment">
+            <div class="result__title">Процентная ставка</div>
+            <div class="result__subtitle"><span>XX</span></div>
+          </div>
+          <div class="result__payment">
+            <div class="result__title">Сумма кредита</div>
+            <div class="result__subtitle">XX</div>
+          </div>
+          <div class="result__payment">
+            <div class="result__title">Необходимый доход</div>
+            <div class="result__subtitle">XX</div>
+          </div>
+        </div>
+        <button class="button button_black">Подать заявку</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
