@@ -11,8 +11,17 @@ let data = {
     },
 };
 
+let results = {
+    rate: data.selectedProgram
+}
+
+
 function getData() {
     return {...data} //Передача не самой ссылки на объект, а его копии
+}
+
+function getResults() {
+    return {...results} //Передача копии объекта result
 }
 
 function setData(newData) { //Принимает новые данные и обновляет объект data
@@ -23,6 +32,11 @@ function setData(newData) { //Принимает новые данные и об
     }
 
     console.log('Updated data', data);
+    results = {
+        rate: data.selectedProgram,
+    }
+
+    console.log('New results', data);
 }
 
-export {getData, setData}
+export {getData, getResults, setData}

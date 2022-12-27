@@ -1,5 +1,6 @@
 import * as Model from "./model.js";
-import programs from './view/buttonPrograms.js'
+import updateResultsView from './view/resultsView.js'
+import programs from './view/buttonPrograms.js';
 
 
 //Функция сработает, когда вся страница будет прогружена
@@ -11,7 +12,15 @@ window.onload = function() {
 
     //Прослушка пользовательского события
     document.addEventListener('updateForm', (e) => {
-        Model.setData(e.detail);
+        Model.setData(e.detail); //Обновляется модель, устанавливаются новые выбранные % ставки
+
+        const data = Model.getData();
+        const results = Model.getResults();
+
+        //Добавление результатов на страницу
+
+        updateResultsView(results);
+
     });
 
 }

@@ -1,3 +1,6 @@
+import updateModal from "./../utils/updateModal.js";
+
+
 function init(getData) {
     const buttons = document.querySelectorAll('button[name="program"]');
 
@@ -21,20 +24,22 @@ function init(getData) {
     document.querySelector('#mil-text').innerHTML = mil * 100 + '%';
     document.querySelector('#zero-text').innerHTML = zero * 100 + '%';
 
-    buttons.forEach(function(button) {
-        button.addEventListener('click', function() {
 
-            this.dispatchEvent( // Отправка события в общую систему событий
-                new CustomEvent('updateForm', { //Генерируем пользовательское событие
-                    bubbles: true, // всплывает
-                    detail: {
-                        selectedProgram: parseFloat(this.value),
-                        onUpdate: 'buttonProgram',
-                        id: this.id,
-                    },
-                })
-            )
-        })
+    const removeAllActive = () => {
+        return buttons.forEach(button => button.classList.remove('button_active'));
+    };
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {            
+            removeAllActive();
+            button.className = 'button button_active'
+            updateModal(this, {
+                selectedProgram: parseFloat(this.value),
+                onUpdate: 'buttonProgram',
+                id: this.id,
+            });
+            
+        });
     })
 
 
