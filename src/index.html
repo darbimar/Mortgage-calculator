@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ипотечный калькулятор</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/font.css">
+    <!-- <link rel="stylesheet" href="css/font.css"> -->
     <link rel="stylesheet" href="css/style.min.css">
+	<link rel="stylesheet" href="libs/noUiSlider/nouislider.min.css">
+
   </head>
   <body>
     <div class="container">
@@ -46,7 +48,7 @@
           <label class="param">
             <div class="param__details">
               <div class="param__title">Стоимость недвижимости</div>
-              <input type="text" class="param__value" value="" >
+              <input type="text" class="param__value" value="" id="input-cost">
             </div>
             <div class="param__range-slider" id="slider-cost"></div>
 
@@ -102,13 +104,18 @@
               <div class="result__subtitle">XX</div>
             </div>
           </div>
-          <button class="button button_black">Подать заявку</button>
+          <button class ="button button_black">Подать заявку</button>
         </div>
       </div>
     </div>
 
+    <script src="./libs/noUiSlider/nouislider.min.js"></script>
+    <script src="./libs/cleaveJS/cleave.min.js"></script> 
+  
+
+
 
     <script src="./js/controller.js" type="module" defer></script>
-
+    
   </body>
 </html>

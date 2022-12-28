@@ -1,5 +1,8 @@
 let data = {
     selectedProgram: 0.1,
+    cost: 12000000,
+    minPrice: 375000,
+    maxPrice: 100000000,
     programs: {
         base: 0.104,
         it: 0.047,
@@ -26,6 +29,16 @@ function getResults() {
 
 function setData(newData) { //Принимает новые данные и обновляет объект data
     console.log('New data', newData);
+
+    if (newData.onUpdate === 'inputCost') {
+        //Обновляем цену при стоимости меньше минимума
+        if(newData.cost < data.minPrice) {
+            newData.cost = data.minPrice; 
+        } else if (newData.cost > data.maxPrice) { //Обновляем цену при стоимости больше максимума
+            newData.cost = data.maxPrice;
+        }
+    } 
+
     data = {
         ...data, 
         ...newData //Если есть новые данные, то они перезапишут старые
