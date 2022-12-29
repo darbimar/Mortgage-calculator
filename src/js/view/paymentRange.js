@@ -1,19 +1,16 @@
-import updateModal from "./../utils/updateModal.js";
+import updateModal from "../utils/updateModal.js";
 
 function init(getData) {
-    const slider = document.querySelector('#slider-cost');
-    const data = getData();
+    const slider = document.querySelector('#slider-downpayment');
 
     noUiSlider.create(slider, {
-        start: data.cost,
+        start: getData().paymentPercent * 100,
         connect: 'lower',
         tooltips: false, //Подсказки
-        step: 100000,
+        step: 1,
         range: {
-            min: data.minPrice,
-            '1%': [400000, 100000],
-            '50%': [12000000, 1000000],
-            max: data.maxPrice,
+            min: getData().minPaymentPercent * 100,
+            max: getData().maxPaymentPercent * 100,
         }
     });
 
@@ -26,8 +23,8 @@ function init(getData) {
         console.log(sliderValue);
 
         updateModal(slider, {
-            cost: sliderValue, 
-            onUpdate: 'costSlider' //"Элемент, который привел к изменениям
+            paymentPercent: sliderValue, 
+            onUpdate: 'paymentSlider' //"Элемент, который привел к изменениям
         })
     })
 

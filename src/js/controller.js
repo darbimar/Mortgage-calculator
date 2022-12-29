@@ -1,8 +1,14 @@
 import * as Model from "./model.js";
 import updateResultsView from './view/resultsView.js'
 import programs from './view/buttonPrograms.js';
+import { updateMinPercents } from "./view/utils.js";
+
 import costInput from './view/costInput.js'
 import costRange from './view/costRange.js'
+import paymentInput from './view/paymentInput.js'
+import paymentRange from './view/paymentRange.js'
+import termInput from './view/termInput.js'
+import termRange from './view/termRange.js'
 
 
 //Функция сработает, когда вся страница будет прогружена
@@ -13,8 +19,13 @@ window.onload = function() {
     programs(getData); 
 
     const cleaveCost = costInput(getData);
-
     const sliderCost = costRange(getData);
+
+    const cleavePayment = paymentInput(getData);
+    const sliderPayment = paymentRange(getData);
+
+    const cleaveTerm = termInput(getData);
+    const sliderTerm = termRange(getData);
 
     //Прослушка пользовательского события
     document.addEventListener('updateForm', (e) => {
@@ -32,17 +43,49 @@ window.onload = function() {
     });
 
     function updateFormAndSlider(data) {
-        //costInput 
+        //Обновляем подпись слайдера с первоначальным взносом в зависимости от выбранной программы
+        if (data.onUpdate === 'buttonProgram') {
+            updateMinPercents(data);
+
+            //Обновляем значение минимального процента в зависимости от выбранной программы
+            sliderPayment.noUiSlider.updateOptions({
+                range: {
+                    min: data.minPaymentPercent * 100,
+                    max: data.maxPaymentPercent * 100,
+                },
+            });
+        }
+
+        
+        //Обновляем costInput 
         if (data.onUpdate !== 'inputCost') {
             cleaveCost.setRawValue(data.cost); //Устанавливаем инпут
         } 
 
-
-        //costInput
-
+        //Обновляем costSlider
         if (data.onUpdate !== 'costSlider') {
             sliderCost.noUiSlider.set(data.cost); //Устанавливаем слайдер
         }
+        //Обновляем paymentInput
+        if (data.onUpdate !== 'inputPayment') {
+            cleavePayment.setRawValue(data.payment);
+        }
+
+        //Обновляем paymentSlider
+        if (data.onUpdate !== 'paymentSlider') {
+            sliderPayment.noUiSlider.set(data.paymentPercent * 100); //Устанавливаем слайдер
+        }
+
+        //Обновляем termInput
+        if (data.onUpdate !== 'inputTerm') {
+            cleaveTerm.setRawValue(data.term);
+        }
+
+        //Обновляем termSlider
+        if (data.onUpdate !== 'termSlider') {
+            sliderTerm.noUiSlider.set(data.term); //Устанавливаем слайдер
+        }
+
     }
 
 }
