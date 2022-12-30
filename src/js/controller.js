@@ -3,6 +3,8 @@ import updateResultsView from './view/resultsView.js'
 import programs from './view/buttonPrograms.js';
 import { updateMinPercents } from "./view/utils.js";
 
+import purposeChoice from './view/purposeChoice.js'
+
 import costInput from './view/costInput.js'
 import costRange from './view/costRange.js'
 import paymentInput from './view/paymentInput.js'
@@ -26,6 +28,10 @@ window.onload = function() {
 
     const cleaveTerm = termInput(getData);
     const sliderTerm = termRange(getData);
+
+    const purpose = purposeChoice();
+
+
 
     //Прослушка пользовательского события
     document.addEventListener('updateForm', (e) => {

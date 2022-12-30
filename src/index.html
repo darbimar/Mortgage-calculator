@@ -17,17 +17,15 @@
       <div class="wrapper">
         <div class="condition">
           <div class="condition__purpose">
-            <form> 
-              <p><input list="purpose" class="input"></p>
-              <datalist id="purpose">
-              <option>Квартира на вторичном рынке</option>
-              <option>Квартира в новостройке</option>
-              <option>Купить дом</option>
-              <option>Построить дом</option>
-              <option>Купить землю или дачный дом</option>
-              <option>Рефинансирование</option>
-              </datalist> 
-            </form> 
+            <select class="condition__purpose-select">
+              <option selected value="secondary">Квартира на вторичном рынке</option>
+              <option value="newbuilding">Квартира в новостройке</option>
+              <option value="buy_house">Купить дом</option>
+              <option value="build_house">Построить дом</option>
+              <option value="land">Купить землю или дачный дом</option>
+              <option value="refinance">Рефинансирование</option>
+            </select>
+            <label class="condition__purpose-label">Цель кредита</label>
           </div>
           <div class="condition__program">
             <button class="button button_active" name="program" value="base" id="base-value">Базовая программа <span id="base-text">XXX</span></button>
