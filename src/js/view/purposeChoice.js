@@ -8,11 +8,32 @@ function purposeChoice() {
     const mil = document.querySelector('#mil-value');
     const zero = document.querySelector('#zero-value');
 
-    
-        if (select.value = "secondary") {
-            base.style.display = 'block';
-        }
+    // if (select.value === "secondary") {
+    //     base.style.display = 'block';
+    //     east.style.display = 'block';
+    //     mil.style.display = 'block';
+    //     zero.style.display = 'block';
+    // }
 
+    select.addEventListener('change', function() {
+        if (select.value === "secondary") {
+            base.style.display = 'block';
+            east.style.display = 'block';
+            mil.style.display = 'block';
+            zero.style.display = 'block';
+        } else if (select.value === "newbuilding" || select.value === "buy_house" || select.value === "build_house") {
+            base.style.display = 'block';
+            it.style.display = 'block';
+            gov.style.display = 'block';
+            fam.style.display = 'block';
+            east.style.display = 'block';
+            mil.style.display = 'block';
+            zero.style.display = 'block';
+        } else if (select.value === "refinance") {
+            base.style.display = 'block';
+            zero.style.display = 'block';
+        }
+    })
 }
 
 
