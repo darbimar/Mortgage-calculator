@@ -79,13 +79,13 @@ function setData(newData) { //Принимает новые данные и об
         }
     }
 
-
     data = {
         ...data, 
         ...newData //Если есть новые данные, то они перезапишут старые
     }
 
     console.log('Updated data', data);
+
     results = {
         rate: data.selectedProgram,
     }

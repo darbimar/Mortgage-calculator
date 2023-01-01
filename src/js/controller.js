@@ -3,14 +3,15 @@ import updateResultsView from './view/resultsView.js'
 import programs from './view/buttonPrograms.js';
 import { updateMinPercents } from "./view/utils.js";
 
-import purposeChoice from './view/purposeChoice.js'
+import purposeChoice from './view/purposeChoice.js';
+import switchButton from './view/switchButton.js';
 
-import costInput from './view/costInput.js'
-import costRange from './view/costRange.js'
-import paymentInput from './view/paymentInput.js'
-import paymentRange from './view/paymentRange.js'
-import termInput from './view/termInput.js'
-import termRange from './view/termRange.js'
+import costInput from './view/costInput.js';
+import costRange from './view/costRange.js';
+import paymentInput from './view/paymentInput.js';
+import paymentRange from './view/paymentRange.js';
+import termInput from './view/termInput.js';
+import termRange from './view/termRange.js';
 
 
 //Функция сработает, когда вся страница будет прогружена
@@ -30,8 +31,7 @@ window.onload = function() {
     const sliderTerm = termRange(getData);
 
     const purpose = purposeChoice();
-
-
+    const buttonSwitch = switchButton();
 
     //Прослушка пользовательского события
     document.addEventListener('updateForm', (e) => {
