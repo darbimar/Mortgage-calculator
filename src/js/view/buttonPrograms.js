@@ -32,13 +32,26 @@ function init(getData) {
     buttons.forEach(function(button) {
         button.addEventListener('click', function() {            
             removeAllActive();
-            button.className = 'button button_active'
+            button.className = 'button button_active';
             updateModal(this, {
                 selectedProgram: parseFloat(this.value),
                 onUpdate: 'buttonProgram',
                 id: this.id,
             });
-            
+
+            const button1 = document.querySelector('.switch-btn');
+
+            if (button1.className === 'switch-btn switch-on') {
+                updateModal(button, {
+                    selectedProgram: parseFloat(button.value) - 0.01,
+                    onUpdate: 'buttonProgram',
+                });
+            } else if (button1.className !== 'switch-btn switch-on') {
+                updateModal(button, {
+                    selectedProgram: parseFloat(button.value),
+                    onUpdate: 'buttonProgram',
+                });
+            }
         });
     })
 

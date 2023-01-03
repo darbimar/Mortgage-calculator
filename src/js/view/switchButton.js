@@ -1,3 +1,5 @@
+import updateModal from "./../utils/updateModal.js";
+
 function switchButton() {
     const button = document.querySelector('.switch-btn');
     

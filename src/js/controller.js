@@ -44,7 +44,7 @@ window.onload = function() {
         updateFormAndSlider(data);
 
         //Добавление результатов на страницу
-        updateResultsView(results)
+        updateResultsView(results);
 
     });
 
