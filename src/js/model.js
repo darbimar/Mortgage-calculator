@@ -86,8 +86,27 @@ function setData(newData) { //Принимает новые данные и об
 
     console.log('Updated data', data);
 
+    //Расчет ипотеки
+    
+    const month = data.term * 12;
+    console.log(month);
+    const totalAmount = data.cost - data.payment;
+    console.log(totalAmount);
+    const monthRate = data.selectedProgram / 12;
+    const generalRate = (1 + monthRate) ** month;
+    console.log(generalRate);
+    const monthPayment = (totalAmount * monthRate * generalRate)/(generalRate - 1);
+    console.log(monthPayment);
+    const overPayment = monthPayment * month - totalAmount;
+    const necessaryIncome = monthPayment * 2;
+
     results = {
         rate: data.selectedProgram,
+        totalAmount,
+        monthPayment,
+        overPayment,
+        necessaryIncome
+
     }
 
     console.log('New results', data);

@@ -33,6 +33,12 @@ window.onload = function() {
     const purpose = purposeChoice();
     const buttonSwitch = switchButton();
 
+    //Запуск пересчета ипотеки
+    Model.setData({});
+    const results = Model.getResults(); 
+    updateResultsView(results);
+
+
     //Прослушка пользовательского события
     document.addEventListener('updateForm', (e) => {
         Model.setData(e.detail); //Обновляется модель, устанавливаются новые выбранные % ставки
