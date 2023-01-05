@@ -131,6 +131,9 @@ window.onload = function() {
             const results = Model.getResults();
 
             let url = checkOnUrl(document.location.href);
+            console.log(url);
+
+            // checkOnUrl(document.location.href);
 
             //Формируем URL, куда будем отправлять запрос
             function checkOnUrl(url) {
@@ -142,6 +145,9 @@ window.onload = function() {
                     let urlArraySlash = newUrl.split('-');
                     urlArraySlash.pop();
                     newUrl = urlArraySlash.join('/');
+                    return newUrl;
+                } else {
+                    return urlArrayDot = String(urlArrayDot);
                 }
             }
 
