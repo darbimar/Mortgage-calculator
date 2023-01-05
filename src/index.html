@@ -105,7 +105,30 @@
               <div class="result__subtitle" id="necessary_income">XX</div>
             </div>
           </div>
-          <button class ="button button_black">Подать заявку</button>
+
+
+          <div class="order-form-wrapper">
+
+						<button class ="button button_black" id="orderFormBtn">Подать заявку</button>
+
+						<form class="order-form none" id="orderForm">
+							<input name="name" value="" type="text" class="order-input" placeholder="Имя, Фамилия" required>
+							<input name="email" value="marine@mail.ru" type="email" class="order-input" placeholder="Email" required>
+							<input name="phone" value="456155" type="text" class="order-input" placeholder="Телефон" data-tel-input required>
+              <button class ="button button_black" id="submitFormBtn">Оформить заявку</button>
+						</form>
+
+						<div id="success" class="alert alert--success none" role="alert">
+							<span class="alert__icon">😀👍</span>
+							<span class="alert__text">Заявка отправлена успешно!</span>
+						</div>
+
+						<div id="error" class="alert alert--danger none" role="alert">
+							<span class="alert__icon">😟</span>
+							<span class="alert__text">Что-то пошло не так. <br>Попробуйте еще раз</span>
+						</div>
+
+					</div>
         </div>
       </div>
     </div>

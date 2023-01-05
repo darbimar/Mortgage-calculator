@@ -100,4 +100,89 @@ window.onload = function() {
 
     }
 
+    //Order form
+    const orderFormBtn = document.querySelector('#orderFormBtn');
+    const orderForm = document.querySelector('#orderForm');
+    const submitFormBtn = document.querySelector('#submitFormBtn');
+
+    orderFormBtn.addEventListener('click', () => {
+        orderForm.classList.remove('none');
+        orderFormBtn.classList.add('none');
+    });
+
+    orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        //Собираем данные с формы
+        const formData = new FormData(orderForm); //Чтобы получить доступ к данным, у них должен быть атрибут name
+
+        //Disable для кнопки и инпутов
+        submitFormBtn.setAttribute('disabled', true);
+        submitFormBtn.innerHTML = 'Заявка отправляется...';
+
+        orderForm.querySelectorAll('input').forEach( function(input){
+            input.setAttribute('disabled', true);
+        });
+
+        
+        fetchData();
+
+        async function fetchData() {
+            const data = Model.getData();
+            const results = Model.getResults();
+
+            let url = checkOnUrl(document.location.href);
+
+            //Формируем URL, куда будем отправлять запрос
+            function checkOnUrl(url) {
+                let urlArrayDot = url.split('.');
+
+                if(urlArrayDot[urlArrayDot.length - 1] === 'html') {
+                    urlArrayDot.pop();
+                    let newUrl = urlArrayDot.join('.');
+                    let urlArraySlash = newUrl.split('-');
+                    urlArraySlash.pop();
+                    newUrl = urlArraySlash.join('/');
+                }
+            }
+
+            const response = await fetch(url + 'mail.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                },
+                body: JSON.stringify({
+                    form: {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        phone: formData.get('phone'),
+                    },
+                    data,
+                    results
+                })
+            });
+
+            const result = await response.text();
+            console.log(result);
+
+            submitFormBtn.removeAttribute('disabled', true);
+            submitFormBtn.innerHTML = 'Оформить заявку';
+
+            orderForm.querySelectorAll('input').forEach((input) => {
+                input.removeAttribute('disabled', true);
+            });
+
+            //Очищаем поля формы
+            orderForm.reset();
+            orderForm.classList.add('none');
+
+            if (result === 'SUCCESS') {
+                document.querySelector('#success').classList.remove('none');
+            } else {
+                document.querySelector('#error').classList.remove('none');
+            }
+        }
+    })
+
+
+
 }
