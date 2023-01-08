@@ -39,22 +39,24 @@ function init(getData) {
                 id: this.id,
             });
 
-            const button1 = document.querySelector('.switch-btn');
-
-            if (button1.className === 'switch-btn switch-on') {
-                updateModal(button, {
-                    selectedProgram: parseFloat(button.value) - 0.01,
-                    onUpdate: 'buttonProgram',
-                });
-            } else if (button1.className !== 'switch-btn switch-on') {
-                updateModal(button, {
-                    selectedProgram: parseFloat(button.value),
-                    onUpdate: 'buttonProgram',
-                });
-            }
+            //Настройка работы переключателя
+            const switchButton = document.querySelector('.switch-btn');
+            switchButton.addEventListener('click', () => {
+                switchButton.classList.toggle('switch-on');
+                if (switchButton.className === 'switch-btn switch-on') {
+                    updateModal(switchButton, {
+                        selectedProgram: parseFloat(button.value) - 0.01,
+                        onUpdate: 'buttonProgram',
+                    });
+                } else if (switchButton.className !== 'switch-btn switch-on') {
+                    updateModal(switchButton, {
+                        selectedProgram: parseFloat(button.value),
+                        onUpdate: 'buttonProgram',
+                    });
+                }
+            })
         });
     })
-
 
 }
 

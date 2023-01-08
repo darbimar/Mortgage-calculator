@@ -4,7 +4,6 @@ import programs from './view/buttonPrograms.js';
 import { updateMinPercents } from "./view/utils.js";
 
 import purposeChoice from './view/purposeChoice.js';
-import switchButton from './view/switchButton.js';
 
 import costInput from './view/costInput.js';
 import costRange from './view/costRange.js';
@@ -31,7 +30,6 @@ window.onload = function() {
     const sliderTerm = termRange(getData);
 
     const purpose = purposeChoice();
-    const buttonSwitch = switchButton();
 
     //Запуск пересчета ипотеки
     Model.setData({});
