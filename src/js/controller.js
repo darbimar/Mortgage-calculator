@@ -129,9 +129,6 @@ window.onload = function() {
             const results = Model.getResults();
 
             let url = checkOnUrl(document.location.href);
-            console.log(url);
-
-            // checkOnUrl(document.location.href);
 
             //Формируем URL, куда будем отправлять запрос
             function checkOnUrl(url) {
@@ -166,7 +163,6 @@ window.onload = function() {
             });
 
             const result = await response.text();
-            console.log(result);
 
             submitFormBtn.removeAttribute('disabled', true);
             submitFormBtn.innerHTML = 'Оформить заявку';

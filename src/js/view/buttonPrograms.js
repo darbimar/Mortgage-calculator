@@ -3,8 +3,10 @@ import updateModal from "./../utils/updateModal.js";
 
 function init(getData) {
     const buttons = document.querySelectorAll('button[name="program"]');
+    const switchButton = document.querySelector('.switch-btn');
 
     const {base, it, gov, fam, east, mil, zero} = getData().programs; // Деструктуризация копии объекта data
+
 
     //Устанавливаем процентные ставки для каждой кнопки
     document.querySelector('#base-value').value = base;
@@ -25,8 +27,12 @@ function init(getData) {
     document.querySelector('#zero-text').innerHTML = zero * 100 + '%';
 
 
-    const removeAllActive = () => {
-        return buttons.forEach(button => button.classList.remove('button_active'));
+    const removeAllActive = async () => {
+        return buttons.forEach(button  =>  {
+            button.classList.remove('button_active');
+            switchButton.classList.remove('switch-on');
+        });
+
     };
 
     buttons.forEach(function(button) {
@@ -38,24 +44,27 @@ function init(getData) {
                 onUpdate: 'buttonProgram',
                 id: this.id,
             });
+        });
 
-            //Настройка работы переключателя
-            const switchButton = document.querySelector('.switch-btn');
-            switchButton.addEventListener('click', () => {
-                switchButton.classList.toggle('switch-on');
+        //Настройка работы переключателя
+        switchButton.addEventListener('click', () => {
+            if (button.className === 'button button_active') {
                 if (switchButton.className === 'switch-btn switch-on') {
-                    updateModal(switchButton, {
+                switchButton.classList.remove('switch-on');
+                updateModal(button, {
+                    selectedProgram: parseFloat(button.value),
+                    onUpdate: 'buttonProgram',
+                    });
+                } else if (switchButton.className !== 'switch-btn switch-on') {
+                    switchButton.classList.add('switch-on');
+                    updateModal(button, {
                         selectedProgram: parseFloat(button.value) - 0.01,
                         onUpdate: 'buttonProgram',
                     });
-                } else if (switchButton.className !== 'switch-btn switch-on') {
-                    updateModal(switchButton, {
-                        selectedProgram: parseFloat(button.value),
-                        onUpdate: 'buttonProgram',
-                    });
-                }
-            })
+                }                    
+            }
         });
+        
     })
 
 }

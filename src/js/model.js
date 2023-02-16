@@ -1,5 +1,5 @@
 let data = {
-    selectedProgram: 0.1,
+    selectedProgram: 0.104,
     cost: 12000000,
     minPrice: 375000,
     maxPrice: 100000000,
@@ -41,7 +41,6 @@ function getResults() {
 }
 
 function setData(newData) { //Принимает новые данные и обновляет объект data
-    console.log('New data', newData);
 
     if(newData.onUpdate === 'buttonProgram') {
         if (newData.id === 'zero-value') {
@@ -84,19 +83,13 @@ function setData(newData) { //Принимает новые данные и об
         ...newData //Если есть новые данные, то они перезапишут старые
     }
 
-    console.log('Updated data', data);
-
     //Расчет ипотеки
     
     const month = data.term * 12;
-    console.log(month);
     const totalAmount = data.cost - data.payment;
-    console.log(totalAmount);
     const monthRate = data.selectedProgram / 12;
     const generalRate = (1 + monthRate) ** month;
-    console.log(generalRate);
     const monthPayment = (totalAmount * monthRate * generalRate)/(generalRate - 1);
-    console.log(monthPayment);
     const overPayment = monthPayment * month - totalAmount;
     const necessaryIncome = monthPayment * 2;
 
@@ -109,7 +102,6 @@ function setData(newData) { //Принимает новые данные и об
 
     }
 
-    console.log('New results', data);
 }
 
 export {getData, getResults, setData}

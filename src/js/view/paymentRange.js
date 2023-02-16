@@ -20,7 +20,6 @@ function init(getData) {
         //Получаем значение из слайдера
         let sliderValue = slider.noUiSlider.get();
         sliderValue = sliderValue.split('.')[0]; //Возвращаем число без знаков после запятой
-        console.log(sliderValue);
 
         updateModal(slider, {
             paymentPercent: sliderValue, 
