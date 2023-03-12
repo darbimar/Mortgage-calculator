@@ -1,16 +1,16 @@
-import * as Model from "./model.js";
-import updateResultsView from './view/resultsView.js'
-import programs from './view/buttonPrograms.js';
-import { updateMinPercents } from "./view/utils.js";
+import * as Model from "./js/model.js";
+import updateResultsView from './js/view/resultsView.js'
+import programs from './js/view/buttonPrograms.js';
+import { updateMinPercents } from "./js/view/utils.js";
 
-import purposeChoice from './view/purposeChoice.js';
+import purposeChoice from './js/view/purposeChoice.js';
 
-import costInput from './view/costInput.js';
-import costRange from './view/costRange.js';
-import paymentInput from './view/paymentInput.js';
-import paymentRange from './view/paymentRange.js';
-import termInput from './view/termInput.js';
-import termRange from './view/termRange.js';
+import costInput from './js/view/costInput.js';
+import costRange from './js/view/costRange.js';
+import paymentInput from './js/view/paymentInput.js';
+import paymentRange from './js/view/paymentRange.js';
+import termInput from './js/view/termInput.js';
+import termRange from './js/view/termRange.js';
 
 
 //Функция сработает, когда вся страница будет прогружена
